@@ -1,11 +1,11 @@
 ClipMeter.js
 ============
 
-measure animation efficiency
+Measure Animation Efficiency
 
 ## Screenshot
 
-![Meter.js]()
+![Meter.js](https://rawgit.com/jarvisniu/ClipMeter.js/master/screenshot.png)
 
 ## Usage
 
@@ -28,14 +28,14 @@ tick();
 
 ## API
 
-Constructor option list
+constructor options
 
 - `align`: position of the meter, chossen from `"left"` or `"right"`
 - `width`: width of the meter
 - `height`: height of the meter
 - `opacity`: opacity
 
-Public methods:
+public methods
 
 - `start()` - record the start time
 - `tick()` - record the end time
