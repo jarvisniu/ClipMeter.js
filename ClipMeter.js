@@ -5,13 +5,14 @@
 
 function ClipMeter(options) {
 
-	options = options || {};
+    options = options || {};
 
-	var align = options.align || "right";
+    var align = options.align || "right";
     var width = options.width || 80;
     var height = options.height || 40;
     var opacity = options.opacity || 0.9;
 
+    // styles
     var BORDER = "#363",
         BG = "#040",
         FILL = "#080",
@@ -21,7 +22,7 @@ function ClipMeter(options) {
     var dom = document.createElement("canvas");
     var context = dom.getContext("2d");
 
-	// Chart
+    // Chart
     var heights = [];
     var heightSum = 0;
     var startTime = 0;
@@ -84,7 +85,7 @@ function ClipMeter(options) {
         context.font = "10px Verdana";
         context.textBaseline = "top";
 
-    	document.body.appendChild(dom);
+        document.body.appendChild(dom);
     }
 
     function render() {
@@ -132,9 +133,9 @@ function ClipMeter(options) {
             }
         }
 
-		// draw FPS
+        // draw FPS
         if (width > 74) {
-        	self.fps = Math.floor(1000 / frameTimeSum * frameTimes.length);
+            self.fps = Math.floor(1000 / frameTimeSum * frameTimes.length);
             context.textAlign = "left";
             context.fillText(self.fps + "FPS", 2, 0);
         }
