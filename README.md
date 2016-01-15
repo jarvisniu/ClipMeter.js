@@ -39,3 +39,7 @@ public methods
 
 - `start()` - record the start time
 - `tick()` - record the end time
+
+## License
+
+MIT
