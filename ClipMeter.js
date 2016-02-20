@@ -2,8 +2,10 @@
  * ClipMeter.js - measure animation efficiency
  * Jarvis Niu - https://github.com/jarvisniu/ClipMeter.js
  */
+ 
+var global = window || this;
 
-function ClipMeter(options) {
+global.ClipMeter = function(options) {
 
     options = options || {};
 
@@ -11,6 +13,8 @@ function ClipMeter(options) {
     var width = options.width || 80;
     var height = options.height || 40;
     var opacity = options.opacity || 0.9;
+
+    var minTransTime = 750;  // in second
 
     // styles
     var BORDER = "#363",
@@ -29,13 +33,15 @@ function ClipMeter(options) {
     var tickTime = 0;
 
     // Usage
-    var prevUsagePercent = 0;
+    var prevUsagePercent = -1;
     var prevUsageTime = 0;
 
     // FPS
     var prevStartTime = -1;
     var frameTimes = [];
     var frameTimeSum = 0;
+    var prevFps = -1;
+    var prevFpsTime = 0;
 
     this.fps = 0;
 
@@ -123,21 +129,23 @@ function ClipMeter(options) {
         if (width > 31) {
             context.fillStyle = STROKE;
             context.textAlign = "right";
-            if (prevUsagePercent == 0 || now - prevUsageTime > 750) {
-                var percent = Math.floor(heightSum / len / height * 100);
-                context.fillText(percent + "%", width - 2, 0);
-                prevUsagePercent = percent;
+            if (now - prevUsageTime > minTransTime) {
+                prevUsagePercent = Math.floor(heightSum / len / height * 100);
                 prevUsageTime = now;
-            } else {
-                context.fillText(prevUsagePercent + "%", width - 2, 0);
             }
+            if (prevUsagePercent > -1)
+            	context.fillText(prevUsagePercent + "%", width - 2, 0);
         }
 
         // draw FPS
         if (width > 74) {
             self.fps = Math.floor(1000 / frameTimeSum * frameTimes.length);
             context.textAlign = "left";
-            context.fillText(self.fps + "FPS", 2, 0);
+            if (now - prevFpsTime >  minTransTime) {
+                prevFps = self.fps;
+                prevFpsTime = now;
+            }
+            if (prevFps > -1) context.fillText(prevFps + "FPS", 2, 0);
         }
     }
 }

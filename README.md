@@ -1,7 +1,10 @@
 ClipMeter.js
 ============
 
-Measure Animation Efficiency
+Measure animation FPS and frame-time usage
+
+This project is similar to mrdoob's [stats.js](https://github.com/mrdoob/stats.js).
+But I extended it to show the usage of every frame time.
 
 ## Screenshot
 
