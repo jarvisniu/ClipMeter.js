@@ -1,5 +1,5 @@
 /**
- * ClipMeter.js - measure animation efficiency
+ * ClipMeter.js - Measure animation FPS and frame-time usage
  * Jarvis Niu - https://github.com/jarvisniu/ClipMeter.js
  */
  
